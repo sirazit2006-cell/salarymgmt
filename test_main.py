@@ -162,7 +162,7 @@ def test_salary_stats_by_country(setup_database):
         "salary": 70000.0
     })
 
-    response = client.get("/employees/salary/country/India")
+    response = client.get("/metrics/country/India")
     assert response.status_code == 200
     data = response.json()
     assert data["country"] == "India"
@@ -171,7 +171,7 @@ def test_salary_stats_by_country(setup_database):
     assert "avg_salary" in data
 
 def test_salary_stats_by_country_not_found(setup_database):
-    response = client.get("/employees/salary/country/NonExistent")
+    response = client.get("/metrics/country/NonExistent")
     assert response.status_code == 404
     assert response.json()["detail"] == "No data found for this country"
 
@@ -185,7 +185,7 @@ def test_avg_salary_by_job(setup_database):
         "salary": 55000.0
     })
 
-    response = client.get("/employees/salary/job/Software Engineer")
+    response = client.get("/metrics/job/Software Engineer")
     assert response.status_code == 200
     data = response.json()
     assert data["job_title"] == "Software Engineer"
