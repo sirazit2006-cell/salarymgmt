@@ -50,15 +50,15 @@ def calculate_salary(db: Session, emp_id: int):
     else:
         deduction = 0
 
-    net_salary = gross - deduction
+    net = gross - deduction
 
     return {
         "employee_id": emp.id,
         "full_name": emp.full_name,
         "country": emp.country,
-        "gross_salary": gross,
+        "gross": gross,
         "deduction": deduction,
-        "net_salary": net_salary
+        "net": net
     }
 
 
