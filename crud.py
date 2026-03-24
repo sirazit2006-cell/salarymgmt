@@ -3,7 +3,7 @@ from sqlalchemy import func
 import models, schemas
 
 def create_employee(db: Session, employee: schemas.EmployeeCreate):
-    db_emp = models.Employee(**employee.dict())
+    db_emp = models.Employee(**employee.model_dump())
     db.add(db_emp)
     db.commit()
     db.refresh(db_emp)
@@ -20,7 +20,7 @@ def update_employee(db: Session, emp_id: int, employee: schemas.EmployeeUpdate):
     if not db_emp:
         return None
 
-    for key, value in employee.dict().items():
+    for key, value in employee.model_dump().items():
         setattr(db_emp, key, value)
 
     db.commit()

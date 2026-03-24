@@ -1,9 +1,9 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 class EmployeeBase(BaseModel):
-    full_name: str = Field(..., example="John Doe")
-    job_title: str = Field(..., example="Software Engineer")
-    country: str = Field(..., example="India")
+    full_name: str = Field(..., json_schema_extra={"example": "John Doe"})
+    job_title: str = Field(..., json_schema_extra={"example": "Software Engineer"})
+    country: str = Field(..., json_schema_extra={"example": "India"})
     salary: float = Field(..., gt=0)
 
 class EmployeeCreate(EmployeeBase):
@@ -15,5 +15,4 @@ class EmployeeUpdate(EmployeeBase):
 class EmployeeResponse(EmployeeBase):
     id: int
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
