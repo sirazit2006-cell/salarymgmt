@@ -58,7 +58,7 @@ def calculate_salary(db: Session, emp_id: int):
         "country": emp.country,
         "gross": gross,
         "deduction": deduction,
-        "net": net
+        "net_salary": net
     }
 
 

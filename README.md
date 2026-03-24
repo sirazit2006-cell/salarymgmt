@@ -79,7 +79,7 @@ pytest
   "country": "India",
   "gross": 50000,
   "deduction": 5000,
-  "net": 45000
+  "net_salary": 45000
 }
 ```
 
