@@ -6,7 +6,7 @@ from sqlalchemy.pool import StaticPool
 DATABASE_URL = "sqlite:///./employees.db"
 
 engine = create_engine(
-    DATABASE_URL, connect_args={"check_same_thread": False},poolclass=StaticPool
+    DATABASE_URL, connect_args={"check_same_thread": False}
 )
 
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
