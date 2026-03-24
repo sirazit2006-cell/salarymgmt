@@ -52,7 +52,7 @@ def get_salary(emp_id: int, db: Session = Depends(get_db)):
     return result
 
 # 1️⃣ Country Salary Stats
-@app.get("/employees/salary/country/{country}")
+@app.get("/metrics/country/{country}")
 def salary_stats_by_country(country: str, db: Session = Depends(get_db)):
     result = crud.get_salary_stats_by_country(db, country)
     if not result:
@@ -61,7 +61,7 @@ def salary_stats_by_country(country: str, db: Session = Depends(get_db)):
 
 
 # 2️⃣ Job Title Avg Salary
-@app.get("/employees/salary/job/{job_title}")
+@app.get("/metrics/job/{job_title}")
 def avg_salary_by_job(job_title: str, db: Session = Depends(get_db)):
     result = crud.get_avg_salary_by_job_title(db, job_title)
     if not result:
