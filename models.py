@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float
+from sqlalchemy import Column, Integer, String, Float,Numeric
 from database import Base
 
 class Employee(Base):
@@ -8,4 +8,4 @@ class Employee(Base):
     full_name = Column(String, nullable=False)
     job_title = Column(String, nullable=False)
     country = Column(String, nullable=False)
-    salary = Column(Float, nullable=False)
+    salary = Column(Numeric(12, 2))

@@ -1,10 +1,10 @@
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field,Decimal
 
 class EmployeeBase(BaseModel):
     full_name: str = Field(..., json_schema_extra={"example": "John Doe"})
     job_title: str = Field(..., json_schema_extra={"example": "Software Engineer"})
     country: str = Field(..., json_schema_extra={"example": "India"})
-    salary: float = Field(..., gt=0)
+    salary: Decimal = Field(..., gt=0)
 
 class EmployeeCreate(EmployeeBase):
     pass
