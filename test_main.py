@@ -26,7 +26,7 @@ app.dependency_overrides[get_db] = override_get_db
 # Create test client
 client = TestClient(app)
 
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="function")
 def setup_database():
     # Create tables
     Base.metadata.create_all(bind=test_engine)
