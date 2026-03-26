@@ -77,7 +77,7 @@ pytest
   "employee_id": 1,
   "full_name": "John Doe",
   "country": "India",
-  "gross": 50000,
+  "gross_salary": 50000,
   "deduction": 5000,
   "net_salary": 45000
 }
