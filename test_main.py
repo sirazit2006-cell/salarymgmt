@@ -1,6 +1,6 @@
 import pytest
 from fastapi.testclient import TestClient
-from sqlalchemy import create_engine
+from sqlalchemy import StaticPool, create_engine
 from sqlalchemy.orm import sessionmaker
 import models, schemas, crud
 from main import app, get_db
@@ -10,7 +10,7 @@ from database import Base
 TEST_DATABASE_URL = "sqlite:///./test.db"
 
 # Create test engine
-test_engine = create_engine(TEST_DATABASE_URL, connect_args={"check_same_thread": False})
+test_engine = create_engine(TEST_DATABASE_URL, connect_args={"check_same_thread": False},poolclass=StaticPool)
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=test_engine)
 
 # Override the get_db dependency
