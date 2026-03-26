@@ -192,6 +192,6 @@ def test_avg_salary_by_job(setup_database):
     assert "avg_salary" in data
 
 def test_avg_salary_by_job_not_found(setup_database):
-    response = client.get("/employees/job/NonExistent")
+    response = client.get("/metrics/job/NonExistent")
     assert response.status_code == 404
     assert response.json()["detail"] == "No data found for this job title"
